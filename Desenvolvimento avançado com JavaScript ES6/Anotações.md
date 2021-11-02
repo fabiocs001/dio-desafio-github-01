@@ -44,7 +44,7 @@
 
 ### Abaixo comparação de duas funções, uma utilizando a escrita antiga, e a outra com arrow function.
 
-**Ex: 4**
+**Ex: 1**
 
 **var Obj = {**
 
@@ -70,9 +70,9 @@
 
 **Obj.showConText();**
 
+---
 
-
-**Ex: 4. OBS: Evita a utilização do bind para fixar o this.****
+**Ex: 2. OBS: Evita a utilização do bind para fixar o this.****
 
 **var Obj = {**
 
@@ -94,7 +94,7 @@
 
 **}**
 
-**Ex: 5**
+**Ex: 3**
 
 **function randomNumber(){**
 
@@ -475,3 +475,98 @@
 **}**
 
 **console.log(sum({a: 5, b: 5}));**
+
+
+
+## **Symbols e Iterators**
+
+**Ex: 1.**
+
+**const uniqueId = Symbol('Hello');**
+
+**const uniqueId2 = Symbol('Hello');**
+
+**console.log(uniqueId===uniqueId2);**
+
+---
+
+**Ex: 2. //Well known symbol**
+
+**const uniqueId = Symbol('Hello');**
+
+**Symbol.iterator;**
+
+**Symbol.split;**
+
+**Symbol.toStringTag;**
+
+**const arr = [1, 2, 3, 4];**
+
+**const it = arr[Symbol.iterator]();**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**![symbol1](D:\Workspace\DIO\dio-desafio-github-01\Desenvolvimento avançado com JavaScript ES6\IMG\symbol1.jpg)**
+
+---
+
+**Ex: 3.**
+
+**const uniqueId = Symbol('Hello');**
+
+**Symbol.iterator;**
+
+**const arr = [1, 2, 3, 4];**
+
+**const obj = {**
+
+  **values: [1, 2, 3, 4],** 
+
+  **[Symbol.iterator]() {** 
+
+​    **let i = 0;**
+
+​    **return{**
+
+​      **next: () => {**
+
+​        **i++;**
+
+​        **return{**
+
+​        **value: this.values[i - 1],**
+
+​        **done: i > this.values.length**
+
+​        **};**
+
+​      **}**
+
+​    **};**  
+
+  **}**
+
+**};**
+
+**const it = obj[Symbol.iterator]();**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+**console.log(it.next());**
+
+> [![symbol1](D:\Workspace\DIO\dio-desafio-github-01\Desenvolvimento avançado com JavaScript ES6\IMG\symbol1.jpg)]()
+
