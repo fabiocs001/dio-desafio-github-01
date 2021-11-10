@@ -28,15 +28,15 @@ let shuffleOrder = () => {
 
 //Acende a próxima cor.
 let lightColor = (element, number) => {
-    number = number * 500;
+    number = number * 700;
 
     setTimeout(() => {
         element.classList.add('selected');
-    }, number - 350);
+    }, number - 450);
 
     setTimeout(() => {
         element.classList.remove('selected');
-    });
+    }), number + 350;
 }
 
 //Verifica se a ordem dos cliques é a mesma gerada pelo jogo.
@@ -46,12 +46,13 @@ let checkOrder = () => {
             gameOver();
             break;
         }   
-            
-        if (clickedOrder.length == order.length){
-            alert(`Pontuação: ${score}\nVocê acertou! Próximo nivel!`);
-            nextLevel();
-        }
+    }   
+
+    if (clickedOrder.length == order.length){
+        alert(`Pontuação: ${score}\nVocê acertou! Próximo nivel!`);
+        nextLevel();
     }
+    
 }
 
 //funcao clique do usuario
@@ -61,8 +62,8 @@ let click = (color) => {
 
     setTimeout(() => {
         createColorElement(color).classList.remove('selected');
-        checkOrder();      
-    },250);    
+        checkOrder();
+    },250);
 }
 
 //funcao retorna a cor
